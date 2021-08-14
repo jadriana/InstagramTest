@@ -1,14 +1,12 @@
 # FRAMEWORK DE PRUEBAS
-### Tarea 1 - Modulo de Automatización Movile. 
+### Tarea Final - Modulo de Automatización Movile. 
 ## Descripcion
-#### 1.- Se elaboró un plan de pruebas en base al presente proyecto
-#### 2.- Se automatizaron los siguientes casos de pruebas:
-1. Verificación de la creación de una tarea en la aplicación.
-2. Verificación de la actualización de una tarea en la aplicación.
-3. Verificación de la eliminación de una tarea en la aplicación.
+#### 1.- Se automatizaron los siguientes casos de pruebas:
+1. Verificación de la edición del campo Nombre del pefil de instagram
+2. Verificación de la edición del campo Presentación del pefil de instagram
 
 ## Objeto de pruebas:
-+ Todo.apk
++ https://play.google.com/store/apps/details?id=com.instagram.android
 ## Dependencias:
 + Selenium-java: 3.141.59
 + Junit 4.12

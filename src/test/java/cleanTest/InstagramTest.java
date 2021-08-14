@@ -2,7 +2,7 @@ package cleanTest;
 
 import activities.Instragram.*;
 import org.junit.After;
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
 import session.Session;
 import java.net.MalformedURLException;
@@ -13,87 +13,43 @@ public class InstagramTest {
     private MainScreen mainScreen= new MainScreen();
     private ProfileScreen profileScreen = new ProfileScreen();
     private EditProfileScreen editProfileScreen = new EditProfileScreen();
+
     @Test
-    public void verifyAuthentication() throws MalformedURLException, InterruptedException {
+    public void verifyEditName() throws MalformedURLException, InterruptedException {
         loginScreen.iniciarSesionBtn.click();
         loginScreen.login("jaqctest","123test");
         loginScreen.ingresarCtaBtn.click();
-        Thread.sleep(8000);
+        Thread.sleep(5000);
         mainScreen.inPerfilBtn.click();
         profileScreen.editPerfilBtn.click();
-        System.out.println("paso 0 "+editProfileScreen.presentationLabel.getText());
+        editProfileScreen.nameTxtLabel.click();
+        String varname = "Equipo 4";
+        editProfileScreen.nameTxtBox.setValue(varname);
+        editProfileScreen.saveEditProfileBtn.click();
+        Thread.sleep(3000);
+        String resultaEsperado = editProfileScreen.nameTxtLabel.getText();
+        editProfileScreen.saveEditProfileBtn.click();
+        System.out.println("Nombre esperado --> "+resultaEsperado);
+        Assert.assertEquals("ERROR! campo nombre no actualizado",varname,resultaEsperado);
+    }
+
+    @Test
+    public void verifyEditPresentation() throws MalformedURLException, InterruptedException {
+        loginScreen.iniciarSesionBtn.click();
+        loginScreen.login("jaqctest","123test");
+        loginScreen.ingresarCtaBtn.click();
+        Thread.sleep(5000);
+        mainScreen.inPerfilBtn.click();
+        profileScreen.editPerfilBtn.click();
         editProfileScreen.presentationLabel.click();
-        editProfileScreen.presentationTxtBox.setValue("test jaqc");
-        editProfileScreen.backEditBtn.click();
-        System.out.println("paso 1 "+editProfileScreen.presentationLabel.getText());
-        //editProfileScreen.saveEditProfileBtn.click();*/
+        String varpresentation = "Si se puede imaginar se puede programar";
+        editProfileScreen.presentationTxtBox.setValue(varpresentation);
+        editProfileScreen.saveEditProfileBtn.click();
         Thread.sleep(3000);
-        System.out.println("name salida "+editProfileScreen.nameTxtLabel.getText());
-        System.out.println("site salida "+editProfileScreen.siteTxtLabel.getText());
-        System.out.println("presentatioin salida "+editProfileScreen.presentationLabel.getText());
-
-        /*System.out.println(editProfileScreen.nameTxtLabel.getText());
-        System.out.println(editProfileScreen.siteTxtLabel.getText());
-        System.out.println(editProfileScreen.presentationLabel.getText());
-        Thread.sleep(3000);
-        editProfileScreen.siteTxtbox.setValue("jaqc@test.com.bo");
-        Thread.sleep(2000);
-        editProfileScreen.presentationTxtbox.click();
-        editProfileScreen.presentationTxtbox.setValue("Si se puede imaginar se puede programar");
-        Thread.sleep(2000);*/
-    }
-
-    @Test
-    public void verifyUpdateName() throws MalformedURLException {
-        mainScreen.inPerfilBtn.click();
-        profileScreen.editPerfilBtn.click();
-
-        editProfileScreen = new EditProfileScreen();
-        String newDat = "JAQC Name test";
-
-        System.out.println("paso 0" +editProfileScreen.editProfileLabel.getText());
-        editProfileScreen.editProfileLabel.click();
-        editProfileScreen.editTxtBox.setValue(newDat);
+        String resulEsperado = editProfileScreen.presentationLabel.getText();
+        System.out.println("presentacion esperado--> "+resulEsperado);
         editProfileScreen.saveEditProfileBtn.click();
-        editProfileScreen.editProfileLabel.click();
-
-       //Assert.assertEquals("ERROR! campo no actualizado",newDat,editProfileScreen.editProfileLabel.getText());
-    }
-
-    @Test
-    public void verifyUpdateSite() throws MalformedURLException {
-        mainScreen.inPerfilBtn.click();
-        profileScreen.editPerfilBtn.click();
-
-        editProfileScreen = new EditProfileScreen();
-        String newDat = "jaqc@test.com.bo";
-
-        System.out.println("paso 0" +editProfileScreen.editProfileLabel.getText());
-        editProfileScreen.editProfileLabel.click();
-        editProfileScreen.editTxtBox.setValue(newDat);
-        editProfileScreen.saveEditProfileBtn.click();
-        editProfileScreen.editProfileLabel.click();
-
-        //Assert.assertEquals("ERROR! campo no actualizado",newDat,editProfileScreen.editProfileLabel.getText());
-    }
-
-
-    @Test
-    public void verifyUpdatePresentation() throws MalformedURLException {
-        mainScreen.inPerfilBtn.click();
-        profileScreen.editPerfilBtn.click();
-
-        editProfileScreen = new EditProfileScreen();
-        String newDat = "Si se puede imaginar se puede programar";
-
-        System.out.println("paso 0" +editProfileScreen.editProfileLabel.getText());
-        editProfileScreen.editProfileLabel.click();
-        editProfileScreen.editTxtBox.setValue(newDat);
-        editProfileScreen.saveEditProfileBtn.click();
-        editProfileScreen.saveEditProfileBtn.click();
-        ///editProfileScreen.editProfileLabel.click();
-        //System.out.println("paso 1" +profileScreen.presentacionLabel.getText());
-        //Assert.assertEquals("ERROR! campo no actualizado",newDat,editProfileScreen.editProfileLabel.getText());
+        Assert.assertEquals("ERROR! campo presentacion no actualizado",varpresentation,resulEsperado);
     }
 
     @After
