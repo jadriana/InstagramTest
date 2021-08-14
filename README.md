@@ -5,7 +5,7 @@
 1. Verificación de la edición del campo Nombre del pefil de instagram
 2. Verificación de la edición del campo Presentación del pefil de instagram
 ## Evidencia
-ver video : Evidencia.wmv
+ver video : 5.-TestInstagramEvidencia.wmv
 ## Objeto de pruebas:
 + https://play.google.com/store/apps/details?id=com.instagram.android
 ## Dependencias:
